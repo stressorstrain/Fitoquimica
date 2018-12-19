@@ -1,0 +1,26 @@
+{% extends 'accounts/base.html' %}
+
+{% block maindiv %}
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+    <div id="panel">
+        <h1 style="font-size: 250%; margin-top: 15%">Projeto deletado.</h1><br>
+    <a class="a_back" href="{% url 'projetos' %}"> voltar aos  projetos</a>
+    </div>
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("projetos").className = "active";
+
+}
+
+
+</script>
+{% endblock script %}

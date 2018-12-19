@@ -1,0 +1,19 @@
+#painele{
+    background:black;
+    color: white;
+    height: 83vh;
+    margin-left:4% ;
+    margin-top: 2% ;
+    width: 90%;
+    overflow-y: scroll;
+    text-align: center;
+
+}
+#people{
+    background: white;
+    float: left;
+    height:  30%;
+    margin-top: 2%;
+    margin-left: 2%;
+    width: 30%;
+}

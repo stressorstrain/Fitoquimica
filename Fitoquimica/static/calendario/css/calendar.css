@@ -1,0 +1,82 @@
+html, body {
+	background: grey;
+	min-height: 100%;
+	min-width: 100%;
+	position: fixed;
+}
+
+.panel{
+	height:100%;
+	position:absolute;
+	
+}
+
+.table_holder{
+	font-size: 130%;
+    max-height: 50%;
+    position: relative;
+	width: 100%;
+}
+.main_t{
+    border-collapse: collapse ;
+
+}
+.table_holder #main_t{
+	background: white;
+	text-align: center;
+	width: 100%;
+	}
+.main_t th{
+	color:black;
+	text-align: center;
+
+}	
+.main_t tbody{
+	width: 100%;
+	
+}
+
+.month-year-nav{
+    background: #4CAF50;
+
+    color: white;
+    font-size: 150%;
+    padding: 3%;
+}
+#header{
+    background: #4CAF50;
+}
+#week_days{
+	color:black;
+	font-size:100%;
+	text-align: center;
+}
+#week_days td{
+    background: #ddd;
+	padding: 2%;
+}
+.dia_row{
+}
+.dia_cell{
+    background: #eee;
+	color: black;
+    font-size: 150%;
+	padding: 1%;
+	width: 1%;
+}
+.dia_cell:hover{
+    cursor: pointer;
+}
+.arrow{
+    background: #4CAF50;
+    font-size: 200%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    padding-top: 12%;
+    width: 100%;
+}
+.arrow:hover{
+    cursor: pointer;
+
+}

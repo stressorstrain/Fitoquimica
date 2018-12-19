@@ -1,0 +1,56 @@
+{% load static %}
+
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <link rel="stylesheet" href="{% static 'commom/css/basico.css'%}">
+  <link rel="stylesheet" href="{% static 'commom/css/avisos.css'%}">
+  <link rel="stylesheet" href="{% static 'commom/css/equip.css'%}">
+  <link rel="stylesheet" href="{% static 'commom/css/protocolos.css'%}">
+
+  <title>FitoWeb</title>
+</head>
+<body>
+{%  if user.is_authenticated %}
+<div class="top-menu">
+  <button id="banner"></button>
+<div id="user"><span>Bem-Vinda(o), {{ request.user.first_name}} {{ request.user.last_name}}</span></div>
+</div>	
+<div class="menu-holder">
+ <div class="vertical-menu">
+  <a href="/home" id="home" >Home</a>
+  <a href="/avisos"  id="avisos" >Avisos Gerais<span id='not_avisos' class="badge"></span></a>
+  <a href="/accounts/projetos"id="projetos" >Projetos</a>
+  <a href="/accounts/planejamento"id="exps" >Planejamento de Experimento</a>
+  <a href="/cromatografia" id="crom" >Cromatografia</a>
+  <a href="/protocolos" id="protocolos" >Procedimentos e Protocolos</a>
+  <a href="/equipe" id="equip">Equipe</a>
+  <a href="/logout" id="logout">Sair</a>
+
+  </div>	  
+</div> 
+<div class="maindiv">
+{% block maindiv %}
+{% endblock %}
+</div>
+{% else %}
+    <div class="maindiv" style="background: white">
+    <div id="auth">
+        <p>Sessão não autenticada, favor autenticar:</p>
+<br><a href="/login" id="login">Autenticar Sessão</a>
+    </div>
+    </div>
+{% endif %}
+{% block script %}
+
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("home").className = "active";
+}
+</script>
+{% endblock script %}
+</body>
+</html>

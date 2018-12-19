@@ -1,0 +1,19 @@
+{% extends 'registration/base.html' %}
+
+{% block maindiv %}
+<div id="login">
+  <h2>Login</h2>
+  <form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    <p>{{ form.username.label_tag }}</p>
+    {{ form.username }}
+
+      <br><p>{{ form.password.label_tag }}</p>
+    {{ form.password }}
+
+    {{ form.errors }}
+
+   <br> <input id="button" type="submit" value="Iniciar Sessão">
+</form>
+</div>
+{% endblock %}

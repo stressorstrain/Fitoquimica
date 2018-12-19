@@ -1,0 +1,132 @@
+#panel{
+    background: #eee;
+    height: 83%;
+    position: relative;
+    margin-top: -1%;
+}
+.avisos{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-align: center;
+    height: 100%;
+    padding: 2%;
+    position: relative;
+    width: 100%;
+}
+#wraper{
+    width: 90%;
+    margin-left: 9%;
+}
+.table-avisos{
+    table-layout: fixed;
+    margin-left: 8%;
+    width: 90%;
+
+}
+.table-avisos tbody{
+    width: 100%;
+    height: 100%;
+}
+.table-avisos th{
+    background: #4CAF50;
+    color: white;
+    font-size: 150%;
+    padding: 1%;
+    width: 100%;
+}
+
+.table-avisos td{
+    font-size: 120%;
+    border-left: 2px solid rgba(185, 185, 185, 0.82);
+}
+.prots{
+    background: white;
+    cursor: pointer;
+    padding: 1%;
+    width: 90%;
+}
+.doc_container{
+    background: white;
+    padding: 4%;
+    text-align: justify;
+
+}
+#delte_td button{
+    background: transparent;
+    background-image: url("/media/projects/deletel.png");
+    background-size: 100% 100%;
+    border: 2px solid #eee;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10%;
+    float: left;
+    text-decoration: none;
+    width: 10%;
+
+}
+.aviso{
+    cursor: pointer;
+    font-size: 150%;
+    margin-right: 10%;
+    margin-top: 2%;
+    padding: 1%;
+    background: #4CAF50;
+}
+.form-container {
+    visibility: hidden;
+    position: absolute;
+    border: 2px solid black;
+    background-color: white;
+    font-size: 120%;
+    left: 30%;
+    text-align: center;
+    overflow-y: auto;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    box-shadow: 10px 0px 0px 1980px rgba(0,0,0,0.75);
+    top: 0;
+    width: 30%;
+}
+.cncl{
+   color: red;
+   background: white;
+   border: none;
+   cursor: pointer;
+  font-size:220%;
+  margin-left: 95%;
+  text-align: center;
+  opacity: 0.8;
+
+}
+#aviso-form{
+    background: white;
+    text-align: center;
+}
+#aviso-form h1{
+    background: white;
+    color: black;
+    font-size: 150%;
+    text-align: center;
+}
+#aviso-form p{
+    font-size: 120%;
+}
+#aviso-form input{
+    display: block;
+    font-size: 80%;
+    width: 95%;
+}
+#aviso-form textarea{
+    width: 100%;
+}
+#aviso-form select{
+    font-size: 100%;
+}
+.add{
+    background:  #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 150%;
+    padding: 1%;
+    margin-top: 2%;
+}

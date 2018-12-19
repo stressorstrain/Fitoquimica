@@ -1,0 +1,110 @@
+{% extends 'commom/base2.html' %}
+{% load static %}
+
+  {% block link %}
+  <link rel="stylesheet" href="{% static 'commom/css/avisos2.css'%}">
+   {% endblock %}
+{% block maindiv %}
+ <div id="panel">
+     <div class="avisos">
+         <h1> Avisos Gerais</h1>
+        <div id="wraper">
+         <table class="table-avisos">
+              <tr>
+                  <th>Descrição</th>
+                  <th>Autor</th>
+                  <th>Data  de Criação</th>
+                  <th>Data Final</th>
+                  <th id="blank">&nbsp;</th>
+              </tr>
+         </table>
+         {% for aviso in avisos %}
+             <table class="table-avisos">
+                <tr class="rowl">
+                  <td style="background: white"> <button onclick="projects(this.nextElementSibling.id)" style=" color: black; font-size: 100%" class="prots">{{ aviso.titulo }}</button>
+                      <div style="display: none; "  class="doc_container"  id={{ aviso.titulo }} >{{ aviso.aviso }}</div></td>
+                  <td style="background: white">{{ aviso.user.user.first_name }} {{ aviso.user.user.last_name }}</td>
+                  <td style="background: white">{{ aviso.data_inicio }}</td>
+                  <td style="background: white">{{ aviso.data_final }}</td>
+                <td id="delte_td">
+                    <button onclick="deletar_aviso('{{ aviso.pk }}')">&nbsp;</button>
+                </td>
+                </tr>
+          </table>
+         {% endfor %}
+          <button class="aviso" onclick="document.getElementById('forms').style.visibility = 'visible' ">Adicionar Aviso</button>
+        </div>
+            <div class="form-container" id="forms">
+            <button class="cncl" onclick="close_calendar()">x</button>
+
+          <form id="aviso-form" method="POST">
+              {% csrf_token %}
+              <h1>Adicionar Aviso</h1>
+              <p>
+                  <label for="id_titulo">{{ form.titulo.label_tag }}</label>
+                  {{ form.titulo }}
+              </p>
+              <p>
+                  <label for="id_aviso">{{ form.aviso.label_tag }}</label>
+                  {{ form.aviso }}
+              </p>
+              <p>
+                  <label for="id_data_final">{{ form.data_final.label_tag }}</label>
+                  {{ form.data_final }}
+              </p>
+
+          </form>
+
+           <button  class="add"  onclick="document.getElementById('aviso-form').submit()"> Adicionar!</button>
+          </div>
+
+     </div>
+</div>
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("blank").style.background = "transparent";
+    document.getElementById("avisos").className = "active";
+    listener();
+}
+
+function listener(){
+    var inp = document.getElementById("id_data_final");
+    inp.addEventListener("click", show_calendar);
+
+}
+function show_calendar(){
+    var calendar = document.getElementById('calendarbox0');
+    calendar.style.display = 'block';
+
+}
+function close_calendar(){
+    var calendar = document.getElementById('forms');
+    calendar.style.visibility = 'hidden';
+
+}
+function deletar_aviso(pk) {
+    if (confirm('Deseja deletar o aviso?') === true){
+        window.location.replace('/avisos/deletar/'+pk)
+    }
+
+}
+function  close_message() {
+    var message = document.getElementById('message');
+    message.style.visibility = 'hidden';
+
+}
+function projects(id) {
+    var x = document.getElementById(id);
+    console.log(x);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+</script>
+{% endblock script %}

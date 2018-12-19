@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <link rel="stylesheet" href=/static/registration/css/basico.css>
+  <link rel="stylesheet" href=/static/registration/css/login.css>
+
+  <title>FitoWeb</title>
+</head>
+<body>
+<div class="top-menu">TOPMENU
+  <button id="banner"></button>
+</div>	
+<div class="menu-holder">
+ <div class="vertical-menu">
+  <a href="/accounts" id="home" >Home</a>
+  <a href="/avisos"  id="avisos" >Avisos Gerais</a>
+  <a href="/accounts/projetos" id="projetos" >Projetos</a>
+  <a href="/accounts/planejamento" id="exps" >Planejamento de Experimento</a>
+  <a href="/cromatografia" id="crom" >Cromatografia</a>
+  <a href="/protocolos" id="protocolos" >Procedimentos e Protocolos</a>
+  <a href="/equipe" id="equip">Equipe</a>
+  <a href="/logout" id="logout">Sair</a>
+  </div>
+</div> 
+<div class="maindiv">
+{% block maindiv %}
+{% endblock %}
+</div>
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("home").className = "active";
+}
+</script>
+{% endblock script %}
+{% block style %}
+{% endblock %}
+</body>
+</html>

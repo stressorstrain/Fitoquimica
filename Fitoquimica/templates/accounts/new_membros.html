@@ -1,0 +1,35 @@
+{% extends 'accounts/base2.html' %}
+{% load static %}
+
+  {% block link %}
+  <link rel="stylesheet" href="{% static 'accounts/css/basico2.css' %}">
+  <link rel="stylesheet" href="{% static 'accounts/css/projetos2.css'%}">
+   {% endblock %}
+{% block maindiv %}
+    <div id="panel">
+        <h1> Projetos </h1>
+        <form id="aviso-form" method="POST">
+         {% csrf_token %}
+         <div id="project_form">
+        <button class="cncl" onclick="close_form()">x</button>
+             <h1>Adicionar Projeto</h1>
+             <p class="desc">Membros</p>
+        {{ form.as_p }}
+         <button  class="submit_f"  onclick="document.getElementById('aviso-form').submit()"> Adicionar!</button>
+        </div>
+        </form>
+    </div>
+
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("projetos").className = "active";
+}
+function close_form(){
+    window.location.replace( '{%  url 'projetos' %}' );
+
+}
+</script>
+{% endblock script %}

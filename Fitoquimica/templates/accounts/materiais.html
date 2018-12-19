@@ -1,0 +1,167 @@
+{% extends 'accounts/base.html' %}
+
+{% block maindiv %}
+    <div id="panelp">
+    <h1>Planejamento de Experimentos</h1>
+    <div class="form-container" id="forms">
+        <button class="cncl" onclick=close_form()>x</button>
+        <form id="aviso-form" method="POST">
+         {% csrf_token %}
+          <h1>Adicionar Material</h1>
+            <p>
+            <label for="id_exp_name">{{ form.exp_name.label_tag }}</label>
+            {{ form.exp_name }}
+            </p>
+            <p>
+                <label for="id_supplie_name">{{ form.supplie_name.label_tag }}</label>
+                {{ form.supplie_name }}
+            </p>
+            <p>
+                <label for="id_supplie_amount">{{ form.supplie_amount.label_tag }}</label>
+                {{ form.supplie_amount }}
+            </p>
+            <p>
+                <label for="id_supplie_measurement">{{ form.supplie_measurement.label_tag }}</label>
+                {{ form.supplie_measurement }}
+              </p>
+            <p>
+                <label for="id_disponibilidade">{{ form.disponibilidade.label_tag }}</label>
+                {{ form.disponibilidade }}
+              </p>
+           <button  class="aviso"  onclick="document.getElementById('aviso-form').submit()"> Adicionar!</button>
+          </form>
+    </div>
+        <h1 >{{ exps.name }}</h1>
+    <div id='experimento'>
+        <div id='calen' class="calendario">
+          <div class="month">
+                    <ul>
+                    <li class="prev">&#10094;</li>
+                    <li class="next">&#10095;</li>
+                    <li style="font-size:150%; margin-top: 3%;">
+                    Agosto<br>
+                    <span style="font-size:120%; margin-top: 1%;">2017</span>
+                    </li>
+                    </ul>
+                  </div>
+
+                   <ul class="weekdays">
+                   <li>Seg</li>
+                   <li>Ter</li>
+                  <li>Qua</li>
+                  <li>Qui</li>
+                  <li>Sex</li>
+                  <li>Sab</li>
+                 <li>Dom</li>
+                </ul>
+
+                <ul class="days">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li>9</li>
+                  <li><span class="active">10</span></li>
+                  <li>11</li>
+                  <li>12</li>
+                  <li>13</li>
+                  <li>14</li>
+                  <li>15</li>
+                  <li>16</li>
+                  <li>17</li>
+                  <li>18</li>
+                  <li>19</li>
+                  <li>20</li>
+                  <li>21</li>
+                  <li>22</li>
+                  <li>23</li>
+                  <li>24</li>
+                  <li>25</li>
+                  <li>26</li>
+                  <li>27</li>
+                  <li>28</li>
+                  <li>29</li>
+                  <li>30</li>
+                  <li>31</li>
+                </ul>
+        </div>
+        <div id="lista-materiais" class="calendario">
+          <h1>Lista de Materiais</h1>
+            <table class="table-list">
+                        <tr>
+                            <th>Nome do Produto</th>
+                        </tr>
+                {% for supplie in supplies %}
+                    {% if supplie.exp == exps %}
+                        <tr>
+                            <td>{{ supplie.supplie_name }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+            <table class="table-list">
+                <tr>
+                    <th>Quantidade Estimada</th>
+                </tr>
+            {% for supplie in supplies %}
+                {% if supplie.exp == exps %}
+                    <tr>
+                        <td>{{ supplie.supplie_amount }} {{ supplie.supplie_measurement }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </table>
+            <button id="form-button"></button>
+        </div>
+        <div class="calendario" id="todod">
+            <h1>To do List</h1>
+                   <table class="table-list" id="todo" >
+                        <tr>
+                            <th>Descrição</th>
+                        </tr>
+                    </table>
+        </div>
+        <div id="lista-equipamento" class="calendario">
+                            <h1>Equipamentos</h1>
+                   <table class="table-list">
+                        <tr>
+                            <th>Nome do Equipamento</th>
+                        </tr>
+
+                    </table>
+                    <table class="table-list">
+                        <tr>
+                            <th>Localização</th>
+                        </tr>
+
+                    </table>
+        </div>
+    </div>
+    </div>
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("exps").className = "active";
+    document.getElementById('forms').style.visibility = 'visible';
+    document.getElementById('id_supplie_amount').type = 'number';
+    var select = document.getElementById('id_exp_name');
+    select.value = '{{ exps.name }}';
+    select.readOnly = true;
+
+}
+
+function close_form()
+{
+    var the_url = window.location.href;
+    var the_arr = the_url.split('/');
+    the_arr.pop();
+    window.location.replace( the_arr.join('/') );
+}
+</script>
+{% endblock script %}

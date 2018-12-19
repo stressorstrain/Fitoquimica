@@ -1,0 +1,85 @@
+{% extends 'cromatografia/base2.html' %}
+{% load static %}
+
+{% block link %}
+  <link rel="stylesheet" href="{% static 'cromatografia/css/basico2.css'%}">
+  <link rel="stylesheet" href="{% static 'cromatografia/css/cromatografia.css'%}">
+  <link rel="stylesheet" href="{% static 'calendario/css/calendar.css'%}">
+
+{% endblock %}
+<div class="maindiv">
+{% block maindiv %}
+    <div id="panel">
+    <div class="holder">
+         <h1>Agendar Horário - Cromatógrafos</h1>
+        <div id="GC-MS">
+        <h1>GC/MS</h1>
+	        <div class='table_holder'>
+            <table  class='main_t' id='main_tg'>
+                <tbody class='tbody' id='tbodyg'>
+                <tr class="header" id="headerg" colspan = '7'>
+                    <td class='arrow' onclick='prev0("g")' style="float: left">&lt;</td><td colspan="5"class='month-year-nav' id='month-year-navg'></td><td class='arrow' onclick='next_month("g")' style="float: right;">&gt;</td>
+                </tr>
+                <tr id='week_days'>
+                    <td>Dom</td>
+                    <td>Seg</td>
+                    <td>Ter</td>
+                    <td>Qua</td>
+                    <td>Qui</td>
+                    <td>Sex</td>
+                    <td>Sab</td>
+                </tr>
+                </tbody>
+            </table>
+	</div>
+</div>
+     <div id="GC-FID">
+        <h1>GC/FID</h1>
+
+	<div class='table_holder'>
+		<table class='main_t' id='main_tf'>
+			<tbody class='tbody' id='tbodyf'>
+			<tr class="header" id="headerf" colspan = '7'>
+				<td class='arrow' onclick='prev0("f")' style="float: left">&lt;</td><td colspan="5" class='month-year-nav' id='month-year-navf'></td><td class='arrow' onclick='next_month("f")' style="float: right;">&gt;</td>
+			</tr>
+			<tr id='week_days'>
+				<td>Dom</td>
+				<td>Seg</td>
+				<td>Ter</td>
+				<td>Qua</td>
+				<td>Qui</td>
+				<td>Sex</td>
+				<td>Sab</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+ <script src="{% static 'calendario/js/calendario.js' %}"></script>
+
+        </div>
+    </div>
+</div>
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("crom").className = "active";
+    {% for gas in gases %}
+        console.log({{ gas.he_p }});
+        let ars = {{gas.ars_p}};
+        let h2 = {{gas.h2_p}};
+        let he = {{gas.he_p}};
+        can_volume(ars, 'can1','#70040D' );
+        can_volume(h2, 'can2', '#0000FF');
+        can_volume(he, 'can3', '#008000');
+{% endfor %}
+function can_volume(porc, id, color){
+        console.log(porc);
+        let vol = 100 - (porc+20);
+        document.getElementById(id).style.background = 'linear-gradient(to bottom, #FFFFFF '+vol+'%, '+color+' 100%)';
+    }
+}
+</script>
+{% endblock script %}

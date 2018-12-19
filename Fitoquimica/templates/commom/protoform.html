@@ -1,0 +1,77 @@
+{% extends 'commom/base.html' %}
+
+{% block maindiv %}
+    <div id="panelrp">
+      <h1>Protocolos e Procedimentos</h1>
+    <div class="dropdown-container" id="containter">
+        <div class="form-container" id="forms">
+            <button class="cncl" onclick=close_form()>x</button>
+          <form enctype="multipart/form-data" style="text-align: left"  id="aviso-form" method="POST">
+              {% csrf_token %}
+              <h1>Adicionar Novo Protocolo</h1>
+              <p>
+                  <label for="id_method_class">{{ form.method_class.label_tag }}</label>
+                  {{ form.method_class }}
+              </p>
+              <p>
+                  <label for="id_method_name">{{ form.method_name.label_tag }}</label>
+                  {{ form.method_name }}
+              </p>
+              <p>
+                  <label for="id_aviso">{{ form.file.label_tag }}</label>
+                  {{ form.file }}
+              </p>
+
+           <button  class="aviso"  onclick="document.getElementById('aviso-form').submit()"> Adicionar!</button>
+          </form></div>
+        {% for cat in cats %}
+            {% for prot in prots %}
+                {% if prot.method_class.categoria == cat.categoria %}
+                <button onclick="projects(this.nextElementSibling.id)" class="prots">{{ cat.categoria }}</button>
+                <div style="display: none" id="{{ prot.method_name }}" class="doc_container">
+                    <ul>
+                        <li><a class="link" href="/media/{{ prot.file }}" download>{{ prot.method_name }} </a></li>
+                    </ul>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+<a id='form-button' href="{% url 'new_protocolo' %}" >Adicionar Protocolo</a><br>
+
+    </div>
+    </div>
+
+
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("protocolos").className = "active";
+    document.getElementById("forms").style.visibility = 'visible';
+
+    var select = document.getElementById('id_method_class');
+    var strUser = select.childNodes;
+    var i;
+
+    for(i=1; i<3; i++){
+        console.log(strUser[i].value)
+    }
+}
+function projects(id) {
+    var x = document.getElementById(id);
+    console.log(x);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+function close_form(){
+    var the_url = window.location.href;
+    var the_arr = the_url.split('/');
+    the_arr.pop();
+    window.location.replace( the_arr.join('/') );
+}
+</script>
+{% endblock script %}

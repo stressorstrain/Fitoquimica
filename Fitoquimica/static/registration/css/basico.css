@@ -1,0 +1,70 @@
+html, body {
+	min-height: 100vh;
+	width: 100vw;
+	margin: 0;
+}
+
+footer{
+    background: red;
+    border: 1px solid grey;
+    min-height: 20vh;
+    bottom: 0;
+	width: 100%;
+    float: left;
+}
+.top-menu{
+    min-height: 13vh;
+    min-width: 100%;
+    background: #2C3233;
+}
+#banner{
+    float: left;
+    min-height: 13vh;
+    background-image:url('/media/laboratorio.jpg');
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    width: 20%;
+
+}
+.menu-holder{
+    background: #33393B;
+    min-height: 100vh;
+    width: 20%;
+    display: inline-block;
+}
+.vertical-menu {
+    width: 100%;
+}
+
+.vertical-menu a {
+    background-color: #33393B;
+    color: white;
+    display: block; /* Make the links appear below each other */
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 150%;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+    color: black;
+}
+
+.vertical-menu .active {
+    background-color: #4CAF50;
+    color: white;
+}
+.maindiv{
+    background: #eee;
+    display: inline-block;
+    float: right;
+    height: 100vh;
+    top: 0;
+    width: 80%;
+    overflow-y: scroll;
+
+}
+.maindiv a{
+    background: red;
+}

@@ -1,0 +1,127 @@
+#panel{
+    background: #eee;
+    height: 84vh;
+    margin-top: 2% ;
+    width: 96%;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+.projetos{
+    background: black;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    height: 95%;
+    margin-left:0 ;
+    margin-top: 0;
+    margin-bottom: 5%;
+    overflow: scroll;
+    text-align: center;
+    width: 100%;
+}
+.projeto{
+    border: 2px solid black;
+    background: white;
+    color: black;
+    border-radius: 2%;
+    display: inline-block;
+    font-size: 150%;
+    height: 80%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding-left: 2%;
+    text-align: center;
+    overflow-y: auto;
+    width: 96%;
+
+}
+.table-projetos{
+    table-layout: fixed;
+    font-size: 150%;
+    border-collapse: collapse;
+    display: inline-table;
+    width: 98%;
+}
+
+.td1{
+    border: 5px solid black;
+    height: 100%;
+    overflow-y: scroll;
+    width: 50%;
+
+}
+.tb2{
+    table-layout: fixed;
+    height:100%;
+    vertical-align: top;
+    padding: 1%;
+    overflow-y: scroll;
+    width: 100%;
+}
+.td2{
+    width: 50%;
+}
+.td3{
+    width: 50%;
+    overflow: hidden;
+}
+.row{
+    min-width:  100%;
+}
+.thdoc{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.ali{
+    font-size: 80%;
+    color: blue;
+    text-decoration: none;
+}
+
+.manImg{
+    background-size: cover;
+    display: inline-block;
+    cursor: pointer;
+    height: 100%;
+    width: 23%;
+
+}
+.mana{
+    background: #70040D;
+    display: block;
+    cursor: pointer;
+    margin-left: 40%;
+    height: 80%;
+    width:21%;
+
+}
+
+.buttonq{
+    display: inline-block;
+    margin-bottom: 1%;
+    float: left;
+    height: 8%;
+    margin-left: 1%;
+    text-align: left;
+    width: 20%;
+}
+#th2{
+    width:100%;
+    overflow: scroll;
+    text-align: center;
+}
+.heder{
+    width: 30%;
+}
+#canister{
+    margin-right: 1%;
+    display: inline-block;
+    float: right;
+    margin-top: -1%;
+    height: 10%;
+    width: 15%;
+    padding: 1%;
+}

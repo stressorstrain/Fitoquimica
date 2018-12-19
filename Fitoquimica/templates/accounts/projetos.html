@@ -1,0 +1,227 @@
+{% extends 'accounts/base2.html' %}
+{% load static %}
+
+  {% block link %}
+  <link rel="stylesheet" href="{% static 'accounts/css/basico2.css' %}">
+  <link rel="stylesheet" href="{% static 'accounts/css/projetos2.css'%}">
+   {% endblock %}
+<div class="maindiv">
+{% block maindiv %}
+<div id="panel">
+    <div class="projetos">
+    <h1> Projetos </h1>
+        {% for project in projetos %}
+            <div id='{{ project.id}}'  class="projeto_hidden">
+        <button class="cncl" onclick="close_form()">x</button>
+            <h1>Documentos do Projeto</h1><br>
+                <div class="add_doc">Adicionar:<br>
+                         <button onclick="upload('.docx', '{{ project.pk }}')" style="background: url('/media/projects/doc_icon.png') no-repeat; background-size:  cover" class="manImg">&nbsp;</button>
+                    <button onclick="upload('.xlsx', '{{ project.pk }}')" style="background: url('/media/projects/spreed_doc.png') no-repeat; background-size:  cover" class="manImg">&nbsp;</button>
+                     <button onclick="upload('.pdf', '{{ project.pk }}')" style="background: url('/media/projects/pdf_icon.png') no-repeat; background-size:  cover" class="manImg">&nbsp;</button>
+                     <button onclick="upload('Outros', '{{ project.pk }}')" style="background: url('/media/projects/pre_icon.png') no-repeat; background-size:  cover" class="manImg">&nbsp;</button>
+                 </div><br>
+
+                    <table  class="table-projetos" >
+                        <tr>
+                            <th colspan="4" class="thdoc"> Documentos</th>
+                        </tr>
+                        <tr id="th2{{ project.id }}">
+                       </tr>
+                    </table>
+            </div>
+            <div class="projeto">
+                <h1 id="{{ project.pk }}">{{ project.titulo }}</h1>
+                <button id="docs" onclick="show_docs('{{ project.id }}')"> Documentos</button>
+                <table>
+                    <tr style="background: #ececec;">
+                        <td class="titulo">Nível:</td>
+                        <td id="data">
+                        {% if project.nivel == 1 %}
+                            Iniciação Científica
+                         {% elif project.nivel == 2 %}
+                            Mestrado
+                         {% elif project.nivel == 3 %}
+                            Doutorado
+                         {% elif project.nivel == 4 %}
+                            Pós-Doc
+                        {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="titulo">Estado Atual:</td>
+                        <td id="data">
+                        {% if project.current_state == 1 %}
+                            Concluído
+                         {% elif project.current_state == 2 %}
+                            Em Andamento
+                         {% elif project.current_state == 3 %}
+                            Desativado
+                        {% endif %}
+                        </td>
+                    </tr>
+                    <tr style="background: #ececec;">
+                        <td class="titulo">Execução:</td>
+                        <td id="data">{{ project.date_begin }} á {{ project.date_final }}</td>
+                    </tr>
+                    <tr>
+                        <td class="titulo">Local:<br>Departamento:</td>
+                       <td id="data">{{ project.research_inst }} <br>{{ project.facility }}</td>
+                    </tr>
+                    <tr style="background: #ececec;">
+                        <td class="titulo">Descrição do Projeto:</td>
+                        <td id="data"><button onclick="desp(this.nextElementSibling.id)"  class="prots">Clique para ler a descrição.</button>
+                         <div  style="display: none" class="doc_container" id="{{ project.pk}}hidden"   >{{ project.description }}</div></td>
+                    </tr>
+                    <tr>
+                        <td class="titulo">Equipe:</td>
+                        <td id="data">
+                            {% for membro in equipe %}
+                                {% if membro.user.user == request.user %}
+                                    {% if membro.project|stringformat:'s' == project.titulo %}
+                                        <p>{{membro.name }}
+                                        {% if membro.coordinator == 2 %}
+                                           <span >Coordenador</span>
+                                            {% endif %}
+                                        </p>
+                                        {% endif %}
+                                {% endif %}
+                                {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
+        <a id='form-button'  href="{% url 'new_project' %}" >Adicionar Projeto</a><br>
+     </div>
+
+
+</div>
+{% endblock %}
+</div>
+{% block script %}
+<script>
+window.onload = active();
+function active() {
+    document.getElementById("projetos").className = "active";
+}
+function show_docs(id) {
+    var doc_div = document.getElementById(id);
+    var ids = id;
+    doc_div.style.visibility = 'visible';
+    console.log(id)
+    table(ids);
+
+
+}
+function upload(type, projeto){
+    var current = window.location.href;
+    var nw_proj = out_space(projeto);
+    window.location.replace(current+'/'+nw_proj+'/'+ type );
+}
+function out_space(string){
+    var nw = string.replace(/\s/g,'');
+    return nw;
+}
+function close_form(){
+    window.location.replace( '{%  url 'projetos' %}' );
+}
+function desp(id){
+    var x = document.getElementById(id);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+function table(id){
+    var headers = ['Doc (.docx):', 'Tabelas (.xlsx):', 'Referências (.pdf):', 'Outros:'];
+    var tabletr = document.getElementById('th2'+id);
+    var i;
+    for(i = 0; i<headers.length; i++){
+        var td  = document.createElement('td');
+        var table = document.createElement('table');
+        var hearder = document.createElement('th');
+        var row = document.createElement('tr1');
+        var row2 = document.createElement('tr2');
+        var td2 = document.createElement('td');
+        var form_a = document.createElement('a');
+        td.id = 'td'+String(i)+id;
+        td.className = 'td1';
+        table.id = 'tb' +String(i)+ id;
+        table.className = 'tb2';
+        row.id = 'tr'+String(i)+id;
+        row.className = 'row';
+        row2.id='tr2'+String(i)+id;
+        row.className = 'row';
+        hearder.id = 'th' +String(i)+id;
+        hearder.innerHTML = headers[i];
+        hearder.className = 'heder';
+        td2.id = 'td2'+id;
+        td2.className = 'td2';
+       row.appendChild(hearder);
+        row2.appendChild(td2);
+        table.appendChild(row);
+        table.appendChild(row2);
+        td.appendChild(table);
+        tabletr.appendChild(td);
+    }
+     start_docs(id);
+}
+function start_docs(id){
+    {% for projeto in projetos %}
+        if('{{ projeto.id }}' !== id){
+            console.log({{ projeto.id }});
+        }
+        else{
+        {% for doc in docs %}
+            var docz = {{ doc.type }};
+            var  name = '{{ doc.file }}'.split("/");
+            var file_pre = '{{doc.file}}';
+            var filename = '{{ doc.filename }}';
+            var project = '{{ doc.project }}';
+            if('{{ doc.project }}' === '{{ projeto.titulo }}') {
+                documentos(docz, name[3], 'media/' + file_pre, filename, id);
+            }
+        {% endfor %}
+            }
+    {% endfor %}
+}
+function documentos(type, name, file, filename,id){
+    if(type ===1){
+       var docs1 = document.getElementById('tb0'+id);
+        put_it_there(docs1, name, file, filename);
+    }
+    else if(type === 2){
+        var docs2 = document.getElementById('tb1'+id);
+         put_it_there(docs2, name, file, filename);
+    }
+    else if(type === 3){
+        var docs3 = document.getElementById('tb2'+id);
+         put_it_there(docs3, name, file, filename);
+    }
+    else if(type === 4){
+        var docs4 = document.getElementById('tb3'+id);
+         put_it_there(docs4, name, file, filename);
+    }
+}function put_it_there(docs, name, file, filename) {
+    if(docs == null){
+        console.log('null')
+    }
+    else {
+        var row = document.createElement('tr');
+        var cell = document.createElement('td');
+        cell.style.textAlign = 'left';
+        cell.className = 'td3';
+        var link = document.createElement('a');
+        link.download = filename;
+        link.innerText = name;
+        link.href = "/" + file;
+        link.className = 'ali';
+        console.log('alo')
+        cell.appendChild(link);
+        row.appendChild(cell);
+        docs.appendChild(row);
+    }
+}
+</script>
+{% endblock script %}

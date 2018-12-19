@@ -1,0 +1,131 @@
+{% extends 'accounts/base2.html' %}
+{% load static %}
+
+  {% block link %}
+  <link rel="stylesheet" href="{% static 'accounts/css/basico2.css' %}">
+  <link rel="stylesheet" href="{% static 'accounts/css/projetos2.css'%}">
+   {% endblock %}
+<div class="maindiv">
+{% block maindiv %}
+    <div id="panel">
+        <h1> Projetos </h1>
+        <div id="project_form"  style="visibility: visible; height: 40%" >
+            <button class="cncl" onclick='close_form()'>x</button>
+          <form id="aviso-form" style="text-align: left" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+             <h1>Adicionar Documento</h1>
+        {{ form.as_p }}
+            <!-------<a  class="submit_f"  href=""> Adicionar!</a><br>----->
+         <button  class="submit_f"  onclick="document.getElementById('aviso-form').submit()"> Adicionar!</button>
+          </form>
+        </div>
+    <a id='form-button' style="width: 5%; height:8%" href="{% url 'new_project' %}" ></a><br>
+    {% for projeto in projetos %}
+        {% if projeto.user.user == request.user %}
+            <div class="projeto">
+                <p style="text-align: left; font-size: 150%">Projeto: {{ projeto.titulo }}<br> Execução: {{ projeto.data }}<br>
+            {% if projeto.nivel == 1 %}
+                Nível: Iniciação Científica
+                {% elif projeto.nivel == 2 %}
+                Nível: Mestrado
+                 {% elif projeto.nivel == 3 %}
+                 Nível: Doutorado
+                {% elif projeto.nivel == 4 %}
+               Nível: Pós-DOC.
+            {% endif %}</p><br>
+                <table class="table-projetos" >
+                    <tr>
+                        <th > Documentos</th>
+                    </tr>
+                    <tr id="th2">
+                        <td onclick="upload(this.innerHTML)" >Doc (.docx): </td>
+                        <td onclick="upload(this.innerHTML)">Tabelas (.xlsx): </td>
+                        <td onclick="upload(this.innerHTML)">Referências (.pdf): </td>
+                        <td onclick="upload(this.innerHTML)">Outros:</td>
+                    </tr>
+                </table>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+{% endblock maindiv %}
+</div>
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("projetos").className = "active";
+    var select = document.getElementById('id_project');
+    var select2 = document.getElementById('id_type');
+    var i;
+    var j;
+    var requ_proj;
+    var requ_doc;
+    var docx = get_doc();
+    var projeto = get_project();
+    var p_model;
+
+    {% for project in all_projects %}
+            p_model ='{{ project.pk }}';
+            if(p_model === projeto){
+                requ_proj = '{{ project.titulo}}';
+        }
+    {% endfor %}
+        for(i=0; i<select.options.length; i++){
+            if(select.options[i].innerText ===  requ_proj){
+                select.value = select.options[i].value;
+            }
+        }
+
+    for(j=0; j<select2.options.length; j++){
+                console.log(select2.options[j].value, docx)
+                if(String(select2.options[j].value) === docx){
+                    select2.value = select2.options[j].value;
+            }
+
+    }
+    select.style.color = 'gray';
+    select.style.pointerEvents = 'none';
+    select.style.touchAction = 'none';
+    select2.style.color = 'gray';
+    select2.style.pointerEvents = 'none';
+    select2.style.touchAction = 'none';
+
+
+}
+function close_form(){
+     window.location.href = '/accounts/projetos';
+}
+function project_model(project){
+    console.log(project)
+    return project.replace(/\s/g,'');
+
+}
+
+function upload(type){
+    var regExp = /\(([^)]+)\)/;
+    var matches = regExp.exec(type);
+    if (matches !== null){
+    console.log(matches[1]);
+    }
+    else{
+        console.log(type.slice(0, -1));
+    }
+}
+function get_project(){
+    var current = window.location.href;
+    var encodedComponent = decodeURIComponent(current);
+    var the_arr = encodedComponent.split('/');
+    return the_arr[5]
+}
+function get_doc() {
+    var available = ['.docx', '.xlsx', '.pdf', 'Outros'];
+     var current = window.location.href;
+    var encodedComponent = decodeURIComponent(current);
+    var the_arr = encodedComponent.split('/');
+    return String(available.indexOf(the_arr[6])+1)
+}
+
+</script>
+{% endblock script %}

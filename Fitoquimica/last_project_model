@@ -1,0 +1,5 @@
+class ProjectFund(models.Model):
+    project = models.ForeignKey(UserProjects, on_delete=models.CASCADE)
+    funding_facility = models.CharField(max_length=30, blank=False, null=False)
+    proj_number = models.CharField(max_length=50, blank=False, null=False)
+

@@ -1,0 +1,78 @@
+{% extends 'cromatografia/base2.html' %}
+{% load static %}
+
+{% block link %}
+  <link rel="stylesheet" href="{% static 'cromatografia/css/basico2.css'%}">
+  <link rel="stylesheet" href="{% static 'cromatografia/css/cromatografia.css'%}">
+  <link rel="stylesheet" href="{% static 'calendario/css/calendar.css'%}">
+
+{% endblock %}
+<div class="maindiv">
+{% block maindiv %}
+    <div id="panel">
+        <div class="holder">
+             <h1> Controle De Gases -  Ultima Verificação:
+                    {% for gas in gases %}
+                            {{ gas.ver_date }} - {{ gas.ver_name }}
+                        {% endfor %}
+            </h1>
+        <div id="gas-control">
+            <form id="form" method="POST">
+              {% csrf_token %}
+              {{ gasform.as_p }}
+              <button type="button" onclick="document.getElementById('form').submit()">Atualizar!</button>
+            </form>
+            <div class="candiv">
+                <p>Ar Sintético</p>
+                    {% for gas in gases %}
+                        Volume Atual:
+                        <p>{{ gas.ars_p }}%</p>
+                        Volume un kgc/m3:
+                        <p>{{ gas.ars }}</p>
+                        Verificação:
+                        <p>{{gas.ver_name}}</p>
+                        Data:
+                        <p>{{ gas.ver_date}}</p>
+                    {% endfor  %}
+                </div>
+                <div class="can" id="can1">&nbsp;</div>
+
+            </div>
+            <div class="candiv">
+                <p>Hidrogênio</p>
+                <div class="can" id="can2">&nbsp;</div>
+            </div>
+            <div class="candiv">
+                <p>Hélio</p>
+                <div class="can" id="can3">&nbsp;</div>
+
+            </div>
+
+        </div>
+     </div>
+    </div>
+</div>
+
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("crom").className = "active";
+    {% for gas in gases %}
+        console.log({{ gas.he_p }});
+        let ars = {{gas.ars_p}};
+        let h2 = {{gas.h2_p}};
+        let he = {{gas.he_p}};
+        can_volume(ars, 'can1','#70040D' );
+        can_volume(h2, 'can2', '#0000FF');
+        can_volume(he, 'can3', '#008000');
+{% endfor %}
+function can_volume(porc, id, color){
+        console.log(porc);
+        let vol = 100 - (porc+20);
+        document.getElementById(id).style.background = 'linear-gradient(to bottom, #FFFFFF '+vol+'%, '+color+' 100%)';
+    }
+}
+</script>
+{% endblock script %}

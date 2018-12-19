@@ -1,0 +1,44 @@
+{% extends 'accounts/base2.html' %}
+{% load static %}
+
+  {% block link %}
+  <link rel="stylesheet" href="{% static 'accounts/css/experimentos.css' %}">
+
+   {% endblock %}
+
+{% block maindiv %}
+<div id="panelp">
+        <form id="aviso-form" method="POST">
+                    <button class="cncl" onclick="close_form() ">x</button>
+
+         {% csrf_token %}
+          <h1>Adicionar Material</h1>
+            {{ form.as_p }}
+           <button  class="sub"  onclick="document.getElementById('aviso-form').submit()"> Adicionar!</button>
+          </form>
+    <h1>Experimetos Cadastrados:</h1>
+    {% for exp in exps %}
+        <a id="expe" href="/accounts/planejamento/{{ request.user }}/{{ exp.name }}" >{{ exp.name}}</a><br><br>
+    {% endfor %}
+    <button id="form-button" onclick="view_form()"> Adicionar Novo Experimento</button>
+
+</div>
+
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("exps").className = "active";
+}
+function view_form(){
+    document.getElementById('aviso-form').style.display = 'block';
+
+}
+function close_form() {
+        document.getElementById('aviso-form').style.display = 'none';
+
+
+}
+</script>
+{% endblock script %}

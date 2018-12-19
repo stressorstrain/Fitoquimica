@@ -1,0 +1,45 @@
+{% extends 'commom/base.html' %}
+
+{% block maindiv %}
+    <div id="panelrp">
+      <h1>Protocolos e Procedimentos</h1>
+    <div class="dropdown-container" id="containter">
+        {% for cat in cats %}
+                <div id="categoria">
+                <button onclick="projects(this.nextElementSibling.id)" class="prots">{{ cat.categoria }}</button>
+                <div style="display: none" id="{{ cat.categoria }}" class="doc_container">
+            {% for prot in prots %}
+                {% if prot.method_class.categoria == cat.categoria %}
+                    <ul style="list-style-type:square">
+                        <li ><a class="link" href="/media/{{ prot.file }}" download>{{ prot.method_name }} </a></li>
+                    </ul>
+                {% endif %}
+            {% endfor %}
+                </div>
+
+                  </div>
+        {% endfor %}
+    </div>
+    <a id='form-button' href="{% url 'new_protocolo' %}" ></a><br>
+
+    </div>
+
+{% endblock maindiv %}
+{% block script %}
+<script>
+window.onload = active();
+function active(){
+    document.getElementById("protocolos").className = "active";
+
+}
+function projects(id) {
+    var x = document.getElementById(id);
+    console.log(x);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+{% endblock script %}

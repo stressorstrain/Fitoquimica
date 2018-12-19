@@ -1,0 +1,231 @@
+#panel{
+    background:#eee;
+    height: 80%;
+    overflow-y: auto;
+    position: relative;
+    text-align: center;
+}
+.projetos{
+    background: #eee;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-left: 1%;
+    padding: 2%;
+    position: relative;
+    width: 94%;
+}
+.projeto{
+    background: white;
+    border: 2px solid #4CAF50;
+    border-radius: 3%;
+    margin-left: 15%;
+    margin-bottom: 5%;
+    width: 70%;
+
+}
+.projeto_hidden{
+    background: #eee;
+    border: 2px solid #4CAF50;
+    border-radius: 3%;
+    box-shadow: 3px 150px 100px 67px rgba(149, 149, 149, 0.75);
+    font-size: 80%;
+    height: 30%;
+    margin-left: 15%;
+    margin-top: 1%;
+    padding: 1%;
+    position: absolute;
+    visibility: hidden;
+    overflow-y: auto;
+    width: 64%;
+    z-index: 9;
+}
+.add_doc{
+    font-size: 140%;
+    height: 14%;
+    margin-left: 1%;
+    text-align: left;
+    position: relative;
+}
+.buttonq{
+    float: left;
+    text-align: left;
+    width: 25%;
+}
+
+.manImg{
+    display: inline-block;
+    cursor: pointer;
+    height: 100%;
+    width: 5%;
+
+}
+.table-projetos{
+    table-layout: fixed;
+    font-size: 150%;
+    border-collapse: collapse;
+    display: inline-table;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 98%;
+}
+
+.td1{
+    border: 5px solid black;
+    height: 100%;
+    overflow-y: scroll;
+    width: 50%;
+
+}
+.tb2{
+    table-layout: fixed;
+    height:100%;
+    vertical-align: top;
+    padding: 1%;
+    overflow-y: scroll;
+    text-align: justify;
+    width: 100%;
+}
+.td2{
+    width: 50%;
+}
+.td3{
+    width: 50%;
+    overflow: hidden;
+}
+.row{
+    width:  100%;
+}
+.thdoc{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.projeto #docs{
+    background: #4CAF50;
+    cursor: pointer;
+    float: right;
+    font-size: 100%;
+    margin-right: 5%;
+    margin-bottom: 5px;
+    opacity: 0.8;
+    padding: 6px;
+}
+.projeto table{
+    height: 50%;
+    width: 100%;
+}
+.projeto h1{
+    margin-left: 5%;
+    padding: 1%;
+    width: 90%;
+}
+
+.projeto .titulo{
+    font-size: 120%;
+    text-align: left;
+    padding-top: 1%;
+    padding-left: 1%;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 18%;
+}
+.projeto #data{
+    font-size: 120%;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+    vertical-align: top;
+    overflow: hidden;
+    text-align: left;
+    width: 62%;
+}
+.projeto #data span{
+    border: 2px solid #4CAF50;
+    border-radius: 15%;
+    font-size: 80%;
+    padding: 5px;
+}
+
+#project_form{
+    background: white;
+    border: 1px solid black;
+    box-shadow: 10px 0px 0px 1980px rgba(0,0,0,0.75);
+
+    font-size: 130%;
+    height: 70%;
+    margin-left: 25%;
+    overflow-y: auto;
+    padding: 1%;
+    position: fixed;
+    text-align: left;
+    top: 17%;
+    width: 30%;
+}
+#project_form li{
+    color: red;
+}
+#project_form h1{
+    margin-left: 20%;
+}
+.desc{
+    font-size: 150%;
+    margin-left: 30%;
+}
+.doc_container{
+    background: white;
+    padding: 1%;
+    text-align: justify;
+
+}
+.prots{
+    background: #eee;
+    color: black;
+    font-size: 100%;
+    cursor: pointer;
+    padding: 1%;
+}
+#project_form input {
+    display: inline-block;
+    width: 90%;
+    margin-top: 2%;
+
+}
+#project_form select {
+    margin-top: 2%;
+    display: inline-block;
+}
+#project_form  #id_students{
+    font-size: 120%;
+    height: 100%;
+    width: 20%;
+}
+.submit_f{
+    background: #4CAF50;
+    border: 2px solid black;
+    color: white;
+    cursor: pointer;
+    font-size: 120%;
+    margin-left: 35%;
+    padding: 1%;
+    width: 25%;
+}
+.cncl{
+   color: red;
+   background: transparent;
+   border: none;
+   cursor: pointer;
+  font-size:220%;
+  margin-left: 95%;
+  text-align: center;
+  opacity: 0.8;
+
+}
+#form-button{
+    border: 1px solid black;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+}

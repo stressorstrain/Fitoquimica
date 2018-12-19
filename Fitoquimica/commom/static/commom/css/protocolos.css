@@ -1,0 +1,73 @@
+#panelrp{
+    display: inline-block;
+    background:white;
+    color: black;
+    height: 83vh;
+    margin-left:4% ;
+    margin-top: 2% ;
+    width: 90%;
+    overflow: hidden;
+    text-align: center;
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+#new {
+    border: 2px solid black;
+    color: black;
+    cursor:pointer;
+    display: block;
+    font-size: 200%;
+    text-decoration: none;
+    margin-left: 35%;
+    padding: 2%;
+    width: 30%;
+}
+
+#table{
+    margin-left: 5%;
+    width: 90%;
+}
+
+#table td{
+    display: inline-block;
+    width: 30%;
+}
+.prots{
+    display: inline-block;
+    font-size: 150%;
+    cursor: pointer;
+    margin-top: 2%;
+    width: 100%;
+
+}
+.doc_container{
+    color: black;
+    font-size: 100%;
+    background: #eee;
+    height: 100%;
+    margin-top: 2%;
+    width: 100%;
+    text-align: left;
+}
+.link{
+    font-size: 150%;
+    text-decoration: none;
+}
+#form-button{
+    cursor: pointer;
+    display: inline-block;
+    background:
+    url("/static/admin/img/icon-addlink.svg")
+    no-repeat;
+    background-size: cover;
+    border: none;
+    margin-top: 10%;
+    width: 8%;
+    height: 12%;
+}
+#categoria{
+    display: inline-block;
+    border: 2px solid white;
+    width: 30%;
+}

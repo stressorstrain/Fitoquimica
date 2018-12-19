@@ -1,0 +1,192 @@
+#panelp{
+    background: #eee;
+    height: 83vh;
+    margin-left:4% ;
+    margin-top: 2% ;
+    width: 96%;
+    overflow-y: scroll;
+    text-align: center;
+}
+#panelp a{
+    border: 2px solid black;
+    color: black;
+    cursor:pointer;
+    display: block;
+    font-size: 200%;
+    text-decoration: none;
+    margin-left: 35%;
+    padding: 2%;
+    width: 30%;
+ }
+.calendario{
+    background: #eee;
+    border: 2px solid black;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    height: 40%;
+    margin: 3%;
+    overflow: hidden;
+    width: 42%;
+}
+#form-button{
+    cursor: pointer;
+    display: inline-block;
+    background:
+    url("/static/admin/img/icon-addlink.svg")
+    no-repeat;
+    background-size: cover;
+    border: none;
+    width: 10%;
+    height: 17%;
+}
+#calen{
+    display: inline-block;
+    overflow-y: auto;
+    margin-bottom: 1%;
+}
+* {box-sizing: border-box;}
+ul {list-style-type: none;}
+body {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+
+.month {
+    width: 100%;
+    height: 24%;
+    background:  #4CAF50;
+    padding-top: 1%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 120%;
+    text-transform: uppercase;
+}
+
+.month .prev {
+    float: left;
+    margin-left: 1%;
+    padding-top: 10px;
+    }
+
+.month .next {
+    float: right;
+    margin-right: 1%;
+    padding-top: 10px;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+    white-space: nowrap;
+}
+
+.weekdays li {
+    display: inline-block;
+    font-size: 150%;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+}
+
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    cursor: pointer;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:150%;
+    color: #777;
+}
+
+.days li .active {
+    padding: 5px;
+    background:  #4CAF50;
+    color: white !important
+}
+#lista-materiais{
+    display: inline-block;
+    margin-bottom: 1%;
+    overflow-y: auto;
+}
+
+.table-list{
+    font-size: 150%;
+    height: 29%;
+    border-collapse: collapse;
+    float: left;
+    display: inline-table;
+    width: 50%;
+}
+.table-list tbody{
+    min-width: 100%;
+}
+.table-list tr{
+    min-width: 100%;
+}
+.table-list td {
+    border: 1px solid #ddd;
+    display: block;
+    padding: 8px;
+    text-align: center;
+}
+.table-list td:hover{
+    cursor: pointer;
+}
+.table-list tr:nth-child(even){background-color: #f2f2f2;}
+.table-list tr:hover {background-color: #ddd;}
+.table-list th {
+    border: 2px solid #fff;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
+#todo{
+    font-size: 150%;
+    width: 100%;
+    overflow-y: hidden;
+
+}
+#todod{
+    display: inline-block;
+    overflow-y: auto;
+
+}
+#lista-equipamento{
+    display: inline-block;
+    overflow-y: auto;
+}
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+    .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+    .weekdays li, .days li {width: 12.5%;}
+    .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+    .weekdays li, .days li {width: 12.2%;}
+}
+#experimento{
+    background: #eee;
+    height: 95%;
+    width: 100%;
+    padding: 1%;
+    text-align: center;
+}

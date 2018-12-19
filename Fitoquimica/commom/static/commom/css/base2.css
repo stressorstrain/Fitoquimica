@@ -1,0 +1,179 @@
+html, body{
+	min-height: 100vh;
+	width: 100vw;
+	margin: 0;
+    overflow: auto;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+}
+
+body{
+    background: #c9d6ca;
+}
+#outer{
+    background: #eee ;
+    height:100%;
+    left:0;
+    position:absolute;
+    top:0;
+    width:100%;
+}
+.top-menu{
+    border: 1px solid grey;
+    background:
+    url('/media/lab_edited.jpg')
+    no-repeat;
+    background-size: 100% 100%;
+    height: 16%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    top: 0;
+
+}
+
+.top-menu #underbar{
+    height: 50%;
+    background: #828D8F;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 49%;
+    width: 84%;
+}
+.maindiv{
+    background: #eee;
+    left: 16%;
+    height: 100%;
+    position: absolute;
+    margin-top: 9%;
+    width: 84%;
+}
+#menuholder{
+    font-size: 120%;
+	width: 16%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    background:#33393B;
+    top: 16%;
+}
+#vertical-menu{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+#vertical-menu a {
+    background-color: #33393B;
+    color: white;
+    display: block; /* Make the links appear below each other */
+    font-size: 150%;
+    padding: 12px;
+    text-decoration: none;
+}
+#vertical-menu a:hover {
+    background-color: #ccc;
+    color: black;
+}
+
+#vertical-menu .active {
+    background-color: #4CAF50;
+    color: white;
+}
+#avisos{
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+}
+#crom_a{
+    background:
+    url('/media/projects/crom.png')
+    no-repeat;
+    background-size: 65% 100%;
+    cursor: pointer;
+    width: 10%;
+}
+#notice{
+    background:
+    url('/media/projects/notice.png')
+    no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+.notification {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+  padding: 3%;
+    height: 50%;
+  position: relative;
+  display: inline-block;
+    width: 15%;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.badge {
+  position: relative;
+    font-size: 100%;
+    padding-top: 3%;
+    padding-right: 4%;
+    padding-left: 4%;
+  background-color: #ff320b;
+    margin-left: 5%;
+    text-align: center;
+    top: 50%;
+  color: white;
+}
+#crom{
+  position: relative;
+  display: inline-block;
+
+}
+.dropbtn{
+    border: 1px solid #33393B;
+    background-color: #33393B;
+    color: white;
+    cursor: pointer;
+    display: block; /* Make the links appear below each other */
+    font-size: 150%;
+    padding: 12px;
+    text-decoration: none;
+}
+.crom{
+    border: 1px solid #33393B;
+    background-color: #33393B;
+    color: white;
+    cursor: pointer;
+    display: block; /* Make the links appear below each other */
+    font-size: 150%;
+    padding: 12px;
+    position: relative;
+    text-decoration: none;
+}
+.dropdown-content {
+    border: 2px solid #ccc;
+    visibility: hidden;
+    font-size: 55%;
+  position: absolute;
+    margin-top: 3%;
+    margin-left: 20%;
+  z-index: 12;
+}
+.crom:hover {
+    background-color: #ccc;
+    color: black;
+    cursor: pointer;
+
+}
+.crom:hover .dropdown-content{
+    visibility: visible;
+}
+.crom a{
+    border-bottom: 1px solid #4CAF50;
+
+}

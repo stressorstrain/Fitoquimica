@@ -1,0 +1,91 @@
+#panelp{
+    background: white;
+    border: 2px solid #4CAF50;
+    border-radius: 3%;
+    margin-left: 15%;
+    margin-bottom: 5%;
+    text-align: center;
+    width: 70%;
+}
+.form-container{
+    border: 2px solid black;
+    display: table;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+#panelp h1{
+    white-space: nowrap;
+
+}
+#panelp label{
+    font-size: 150%;
+    margin-top: 2%;
+}
+#panelp input{
+    display: block;
+    font-size: 130%;
+    margin-top: 2%;
+    width: 90%;
+
+}
+.cncl {
+    color: red;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 220%;
+    margin-left: 96%;
+    text-align: center;
+    opacity: 0.8;
+}
+#aviso-form{
+    border: 2px solid black;
+    box-shadow: 3px 150px 100px 67px rgba(149, 149, 149, 0.75);
+    margin-left: 30%;
+    margin-top: 3%;
+    padding: 3%;
+    position: relative;
+    text-align: left;
+    display: none;
+    width: 30%;
+ }
+.sub{
+    cursor: pointer;
+    font-size: 150%;
+    margin-top: 2%;
+    padding: 1%;
+    background: #4CAF50;
+}
+#expsx{
+    border: 2px solid green;
+    display: table;
+    margin-left: 35%;
+    text-align: left;
+    width: 50%;
+
+}
+#expe{
+    background: white;
+    border: 2px solid black;
+    color: black;
+    display: block;
+    font-size: 150%;
+    margin-left: 40%;
+    text-decoration: none;
+    text-align: center;
+    padding: 1%;
+    width: 20%;
+}
+#form-button{
+    border: 1px solid black;
+    background: #4CAF50;
+    color: white;
+    font-size: 150%;
+    margin: 1%;
+    padding: 1%;
+    text-decoration: none;
+}
+#row{
+    display: table-row;
+    width: 100%;
+}

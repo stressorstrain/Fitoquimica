@@ -1,0 +1,105 @@
+html, body {
+	min-height: 100vh;
+	width: 100vw;
+	margin: 0;
+}
+
+footer{
+    background: #eee;
+    border: 1px solid grey;
+    min-height: 20vh;
+    bottom: 0;
+	width: 100%;
+    float: left;
+}
+.top-menu{
+    min-height: 13vh;
+    min-width: 100%;
+    background: #2C3233;
+}
+#banner{
+    float: left;
+    min-height: 13vh;
+    background-image:url('/media/laboratorio.jpg');
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    width: 20%;
+
+}
+#user{
+    background:  #2C3233;
+    color: white;
+    font-size: 200%;
+    padding-top: 3%;
+    margin-left: 68%;
+}
+
+.menu-holder{
+    background: #33393B;
+    min-height: 86vh;
+    width: 20%;
+    display: inline-block;
+}
+.vertical-menu {
+    width: 100%;
+}
+
+.vertical-menu a {
+    background-color: #33393B;
+    color: white;
+    display: block; /* Make the links appear below each other */
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 150%;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+    color: black;
+}
+
+.vertical-menu .active {
+    background-color: #4CAF50;
+    color: white;
+}
+.maindiv{
+    background: #eee;
+    display: inline-block;
+    float: right;
+    min-height: 86vh;
+    top: 0;
+    width: 80%;
+
+}
+#login:link, :visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+#login :hover, active {
+    background-color: red;
+}
+
+#auth{
+    border: 2px solid black;
+    color: black;
+    box-shadow: 5px 10px 18px #888888;
+    background: white;
+    font-size: 120%;
+    font-weight: bold;
+    margin-left: 25%;
+    margin-top: 25%;
+    max-width: 25%;
+    padding: 1%;
+    overflow-y: hidden;
+    text-align: center;
+}
+
